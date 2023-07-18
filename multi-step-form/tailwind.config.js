@@ -7,6 +7,7 @@ export default {
         denim: "#022959",
         "light-blue": "#ABBCFF",
         "semi-black": "#022959",
+        "semi-purple": "#483EFF",
       },
     },
   },
