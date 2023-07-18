@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         denim: "#022959",
+        "light-blue": "#ABBCFF",
         "semi-black": "#022959",
       },
     },

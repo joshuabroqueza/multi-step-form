@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import FirstPageForm from "./assets/components/FirstPageForm";
+import FirstPageForm from "./components/FirstPageForm";
 
 function reducer(state, action) {
   switch (action.type) {

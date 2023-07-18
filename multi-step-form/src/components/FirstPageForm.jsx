@@ -7,7 +7,7 @@ const FirstPageForm = () => {
   const phone_number = useRef(null);
 
   return (
-    <div className="flex flex-col outline outline-red-300">
+    <div className="flex flex-col">
       <form className="flex-grow">
         <div className="form_header p-5 m-5 border rounded-2xl bg-white">
           <h1 className="text-2xl font-bold">Personal info</h1>
