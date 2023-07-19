@@ -3,6 +3,10 @@ import Firstform from "./components/Firstform";
 import { useState, useReducer } from "react";
 import SecondForm from "./components/SecondForm";
 import Header from "./components/Header";
+import arcade_icon from "./assets/images/icon-arcade.svg";
+import checkmark from "./assets/images/icon-checkmark.svg";
+import icon_pro from "./assets/images/icon-pro.svg";
+import advance_icon from "./assets/images/icon-advanced.svg";
 
 const initialState = {
   pages: [
@@ -33,6 +37,29 @@ const initialState = {
     phoneNumber: "",
   },
   activePage: 1,
+  plan: [
+    {
+      id: 1,
+      name: "Arcade",
+      fee: 9,
+      icon: arcade_icon,
+      selectedPlan: false,
+    },
+    {
+      id: 2,
+      name: "Advance",
+      fee: 12,
+      icon: advance_icon,
+      selectedPlan: false,
+    },
+    {
+      id: 3,
+      name: "Pro",
+      fee: 15,
+      icon: icon_pro,
+      selectedPlan: false,
+    },
+  ],
 };
 
 function reducer(state, action) {
@@ -47,10 +74,14 @@ function reducer(state, action) {
         activePage: 2,
       };
     case "BACK_TO_FIRST_FORM":
-      console.log("back first form: ", state);
       return {
         ...state,
         activePage: 1,
+      };
+
+    case "SELECTED_PLAN":
+      return {
+        ...state,
       };
     default:
       return state;
@@ -58,7 +89,7 @@ function reducer(state, action) {
 }
 
 const Appv3 = () => {
-  const [{ pages, activePage, formData }, dispatch] = useReducer(
+  const [{ pages, activePage, formData, plan }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -72,9 +103,9 @@ const Appv3 = () => {
 
         <div className="body_container flex flex-col px-5 md:px-10 md:w-[70%]">
           {activePage === 1 && (
-            <Firstform data={formData} dispatch={dispatch} />
+            <Firstform formData={formData} dispatch={dispatch} />
           )}
-          {activePage === 2 && <SecondForm dispatch={dispatch} />}
+          {activePage === 2 && <SecondForm plan={plan} dispatch={dispatch} />}
 
           {/* <SecondForm /> */}
 

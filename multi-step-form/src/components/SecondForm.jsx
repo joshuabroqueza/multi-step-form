@@ -4,16 +4,12 @@ import checkmark from "../assets/images/icon-checkmark.svg";
 import iconpro from "../assets/images/icon-pro.svg";
 import { useState } from "react";
 
-const SecondForm = ({ dispatch }) => {
+const SecondForm = ({ dispatch, plan }) => {
   const [isMonthly, setIsMonthly] = useState(true);
 
   const handleToggle = () => {
     setIsMonthly(!isMonthly);
   };
-
-  // const handleNextPage = () => {
-  //   onNextStep();
-  // };
 
   const handlePreviousStep = () => {
     dispatch({
@@ -32,33 +28,20 @@ const SecondForm = ({ dispatch }) => {
         </p>
 
         <div className="subscription_container w-full">
-          <div className="subscription_child">
-            <div className="flex flex-row items-center px-5 py-5 my-4 border rounded-xl">
-              <img src={arcade_icon} alt="arcade_icon" className="mr-3" />
-              <div>
-                <h3 className="text-xl font-bold">Arcade</h3>
-                <p className="text-slate-400">$9/mo</p>
+          {plan.map((plan) => (
+            <div className="subscription_child">
+              <div
+                key={plan.id}
+                className="flex flex-row items-center px-5 py-5 my-4 border cursor-pointer hover:border-semi-purple rounded-xl"
+              >
+                <img src={plan.icon} alt="arcade_icon" className="mr-3" />
+                <div>
+                  <h3 className="text-xl font-bold">{plan.name}</h3>
+                  <p className="text-slate-400">${plan.fee}/mo</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="subscription_child">
-            <div className="flex flex-row items-center px-5 py-5 my-4 border rounded-xl">
-              <img src={arcade_icon} alt="arcade_icon" className="mr-3" />
-              <div>
-                <h3 className="text-xl font-bold">Arcade</h3>
-                <p className="text-slate-400">$9/mo</p>
-              </div>
-            </div>
-          </div>
-          <div className="subscription_child">
-            <div className="flex flex-row items-center px-5 py-5 my-4 border rounded-xl">
-              <img src={arcade_icon} alt="arcade_icon" className="mr-3" />
-              <div>
-                <h3 className="text-xl font-bold">Arcade</h3>
-                <p className="text-slate-400">$9/mo</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="flex justify-center items-center w-full  p-5 bg-[#f8f8fa] rounded-xl">
           <span

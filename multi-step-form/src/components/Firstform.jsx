@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useState } from "react";
 
-const Firstform = ({ dispatch, data }) => {
+const Firstform = ({ dispatch, formData }) => {
   const name = useRef(null);
   const email = useRef(null);
   const phonenumber = useRef(null);
@@ -10,9 +10,11 @@ const Firstform = ({ dispatch, data }) => {
   const [isNameEmpty, setIsNameEmpty] = useState(false);
   const [isEmailEmpty, setIsEmailEmpty] = useState(false);
 
-  const [nameValue, setNameValue] = useState(data.name);
-  const [emailValue, setEmailValue] = useState(data.email);
-  const [phoneNumberValue, setPhoneNumberValue] = useState(data.phoneNumber);
+  const [nameValue, setNameValue] = useState(formData.name);
+  const [emailValue, setEmailValue] = useState(formData.email);
+  const [phoneNumberValue, setPhoneNumberValue] = useState(
+    formData.phoneNumber
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
