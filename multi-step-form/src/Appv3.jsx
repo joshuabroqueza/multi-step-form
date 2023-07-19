@@ -80,8 +80,35 @@ function reducer(state, action) {
       };
 
     case "SELECTED_PLAN":
+      //The action payload will return an ID of the selected plan
+      //We will use this ID to find the selected plan in the plan array
+      //We will then set the selectedPlan property of the selected plan to true and the rest to false
+
+      const selectedPlan = state.plan.find(
+        (plan) => plan.id === action.payload
+      );
+      selectedPlan.selectedPlan = true;
+
+      //We will now update the plan array with false selectedPlan property
+      //We will use the map method to loop through the plan array
+      //We will then set the selectedPlan property of each plan to false
+
+      const updatedPlan = state.plan.map((plan) =>
+        plan.id === selectedPlan.id
+          ? selectedPlan
+          : { ...plan, selectedPlan: false }
+      );
+
+      //After setting the selectedPlan property of the selected plan to true
+      //We will update the plan array with the new selectedPlan property
+
+      //   const updatedPlan = state.plan.map((plan) =>
+      //     plan.id === selectedPlan.id ? selectedPlan : plan
+      //   );
+
       return {
         ...state,
+        plan: updatedPlan,
       };
     default:
       return state;

@@ -17,6 +17,13 @@ const SecondForm = ({ dispatch, plan }) => {
     });
   };
 
+  const handleSelectPlan = (id) => {
+    dispatch({
+      type: "SELECTED_PLAN",
+      payload: id,
+    });
+  };
+
   return (
     <div>
       <div className="form_header w-full p-5 my-5 md:p-0 md:m-0 border md:border-none shadow-lg md:shadow-none drop-shadow md:drop-shadow-none rounded-2xl md:rounded-none bg-white md:h-[80vh] md:w-full ">
@@ -29,10 +36,14 @@ const SecondForm = ({ dispatch, plan }) => {
 
         <div className="subscription_container w-full">
           {plan.map((plan) => (
-            <div className="subscription_child">
+            <div key={plan.id} className="subscription_child">
               <div
-                key={plan.id}
-                className="flex flex-row items-center px-5 py-5 my-4 border cursor-pointer hover:border-semi-purple rounded-xl"
+                onClick={() => handleSelectPlan(plan.id)}
+                className={
+                  plan.selectedPlan
+                    ? "flex flex-row items-center px-5 py-5 my-4 border border-semi-purple  cursor-pointer hover:border-semi-purple rounded-xl"
+                    : "flex flex-row items-center px-5 py-5 my-4 border cursor-pointer hover:border-semi-purple rounded-xl"
+                }
               >
                 <img src={plan.icon} alt="arcade_icon" className="mr-3" />
                 <div>
