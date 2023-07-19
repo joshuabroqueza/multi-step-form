@@ -1,9 +1,3 @@
-import React from "react";
-import arcade_icon from "../assets/images/icon-arcade.svg";
-import checkmark from "../assets/images/icon-checkmark.svg";
-import iconpro from "../assets/images/icon-pro.svg";
-import { useState } from "react";
-
 const SecondForm = ({ dispatch, plan, isMonthly }) => {
   const handleToggle = () => {
     dispatch({

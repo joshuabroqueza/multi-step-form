@@ -1,7 +1,6 @@
 import React from "react";
 
 const Header = ({ pages, activePage }) => {
-  console.log(activePage);
   return (
     <div className="number_container flex flex-row md:flex-col md:justify-evenly items-center my-10 w-full  md:h-3/4 ">
       {pages.map((page) => (

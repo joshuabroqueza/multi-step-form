@@ -55,7 +55,7 @@ const Firstform = ({ dispatch, formData }) => {
 
         <div className="input_container flex flex-col">
           <div className="input_child flex flex-col my-1">
-            <div className="flex flex-row justify-between my-1">
+            <div className="flex flex-row items-center justify-between my-1">
               <label
                 className="text-sm md:text-xl md:my-2 text-denim"
                 htmlFor="name"
@@ -82,7 +82,7 @@ const Firstform = ({ dispatch, formData }) => {
             />
           </div>
           <div className="input_child flex flex-col my-1">
-            <div className="flex flex-row justify-between my-1">
+            <div className="flex flex-row items-center justify-between my-1">
               <label
                 className="text-sm md:text-xl md:my-2 text-denim"
                 htmlFor="email"
@@ -109,7 +109,7 @@ const Firstform = ({ dispatch, formData }) => {
             />
           </div>
           <div className="input_child flex flex-col my-1">
-            <div className="flex flex-row justify-between my-1">
+            <div className="flex flex-row items-center justify-between my-1">
               <label
                 className="text-sm md:text-xl md:my-2 text-denim"
                 htmlFor="phone_number"
