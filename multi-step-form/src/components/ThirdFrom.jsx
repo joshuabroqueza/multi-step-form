@@ -82,7 +82,7 @@ const ThirdFrom = () => {
         <button className="bg-white w-1/3 text-black py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md">
           Go Back
         </button>
-        <button className="bg-denim w-1/3 text-white py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md">
+        <button className="bg-denim w-1/3 text-white py-2 px-2 rounded md:text-lg shadow-md drop-shadow-md">
           Next Step
         </button>
       </div>

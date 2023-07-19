@@ -1,8 +1,13 @@
 import React from "react";
 
-const Firstform = () => {
+const Firstform = ({ onNextStep }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onNextStep();
+    console.log("im click");
+  };
   return (
-    <form>
+    <form onSubmit={(e) => handleSubmit(e)}>
       <div className="form_header w-full p-5 my-5 md:p-0 md:m-0 border md:border-none shadow-lg md:shadow-none drop-shadow md:drop-shadow-none rounded-2xl md:rounded-none bg-white md:h-[80vh] md:w-full ">
         <h1 className="text-2xl md:text-4xl my-5 font-bold text-denim">
           Personal info

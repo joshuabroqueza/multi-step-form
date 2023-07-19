@@ -8,6 +8,7 @@ export default {
         "light-blue": "#ABBCFF",
         "semi-black": "#022959",
         "semi-purple": "#483EFF",
+        "semi-grey": "#9699AA",
       },
     },
   },

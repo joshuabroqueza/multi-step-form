@@ -79,7 +79,7 @@ const Appv2 = () => {
             </div>
           </div>
           <div className="button_container h-[10%] bg-white border flex justify-end items-center p-3 absolute bottom-0 left-0 right-0">
-            <button className="bg-denim w-1/3 text-white py-2 px-4 rounded">
+            <button className="bg-denim w-1/3 text-white py-2 px-2 rounded">
               Next Step
             </button>
           </div>
