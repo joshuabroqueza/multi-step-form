@@ -30,7 +30,7 @@ const ThirdForm = ({ dispatch, addOns }) => {
                 <div className="flex flex-row items-center justify-center">
                   <div className="mr-5">
                     <input
-                      className="h-5 w-5 accent-semi-purple"
+                      className="h-5 w-5  accent-semi-purple cursor-pointer"
                       type="checkbox"
                       checked={addOn.selectedAddOn}
                       onChange={() => handleAddOnSelection(addOn.id)}
@@ -59,13 +59,13 @@ const ThirdForm = ({ dispatch, addOns }) => {
               type: "BACK_TO_SECOND_FORM",
             })
           }
-          className="bg-white w-1/3 text-black py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md"
+          className="bg-white w-1/3 text-denim font-semibold py-2 px-4 rounded md:text-lg shadow-sm drop-shadow-md hover:shadow-xl active:scale-90 transition duration-150"
         >
           Go Back
         </button>
         <button
           onClick={() => handleNextPage()}
-          className="bg-denim w-1/3 text-white py-2 px-2 rounded md:text-lg shadow-md drop-shadow-md"
+          className="bg-denim w-1/3 text-white py-2 px-2 rounded md:text-lg shadow-sm drop-shadow-md hover:shadow-xl active:scale-90 transition duration-150"
         >
           Next Step
         </button>

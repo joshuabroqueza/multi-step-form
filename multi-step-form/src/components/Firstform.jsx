@@ -74,7 +74,7 @@ const Firstform = ({ dispatch, formData }) => {
               value={nameValue}
               onChange={(e) => setNameValue(e.target.value)}
               ref={name}
-              className={`border rounded p-3 md:p-5 md:placeholder:text-lg ${
+              className={`hover:border-semi-purple focus:border-semi-purple active:outline-semi-purple border rounded p-3 md:p-5 md:placeholder:text-lg ${
                 isNameEmpty ? "border-red-500" : ""
               }`}
               type="text"
@@ -101,7 +101,7 @@ const Firstform = ({ dispatch, formData }) => {
               value={emailValue}
               ref={email}
               onChange={(e) => setEmailValue(e.target.value)}
-              className={`border rounded p-3 md:p-5 md:placeholder:text-lg ${
+              className={`hover:border-semi-purple focus:border-semi-purple active:outline-semi-purple border rounded p-3 md:p-5 md:placeholder:text-lg ${
                 isEmailEmpty ? "border-red-500" : ""
               }`}
               type="email"
@@ -129,7 +129,7 @@ const Firstform = ({ dispatch, formData }) => {
               value={phoneNumberValue}
               onChange={(e) => setPhoneNumberValue(e.target.value)}
               ref={phonenumber}
-              className={`border rounded p-3 md:p-5 md:placeholder:text-lg ${
+              className={`hover:border-semi-purple focus:border-semi-purple active:outline-semi-purple border rounded p-3 md:p-5 md:placeholder:text-lg ${
                 isPhoneNumberEmpty ? "border-red-500" : ""
               }`}
               type="number"
@@ -140,7 +140,7 @@ const Firstform = ({ dispatch, formData }) => {
       </div>
 
       <div className="button_container md:my-10 my-24 h-[10%] flex justify-end items-center px-5">
-        <button className="bg-denim w-1/3 text-white py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md">
+        <button className="bg-denim w-1/3 text-white py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md hover:shadow-xl active:scale-90 transition duration-150">
           Next Step
         </button>
       </div>

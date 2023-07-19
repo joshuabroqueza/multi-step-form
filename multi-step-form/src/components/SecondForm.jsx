@@ -4,11 +4,12 @@ import checkmark from "../assets/images/icon-checkmark.svg";
 import iconpro from "../assets/images/icon-pro.svg";
 import { useState } from "react";
 
-const SecondForm = ({ dispatch, plan }) => {
-  const [isMonthly, setIsMonthly] = useState(true);
-
+const SecondForm = ({ dispatch, plan, isMonthly }) => {
   const handleToggle = () => {
-    setIsMonthly(!isMonthly);
+    dispatch({
+      type: "TOGGLE_MONTHLY",
+      payload: !isMonthly,
+    });
   };
 
   const handlePreviousStep = () => {
@@ -70,7 +71,7 @@ const SecondForm = ({ dispatch, plan }) => {
           >
             Monthly
           </span>
-          <label htmlFor="toggle" className="relative mx-3">
+          <label htmlFor="toggle" className="relative mx-3 cursor-pointer">
             <input
               id="toggle"
               type="checkbox"
@@ -100,13 +101,13 @@ const SecondForm = ({ dispatch, plan }) => {
       <div className="button_container md:my-10 my-24 h-[10%] flex justify-between items-center px-5">
         <button
           onClick={() => handlePreviousStep()}
-          className="bg-white w-1/3 text-black py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md"
+          className="bg-white w-1/3 text-denim font-semibold py-2 px-4 rounded md:text-lg shadow-sm drop-shadow-md hover:shadow-xl active:scale-90 transition duration-150"
         >
           Go Back
         </button>
         <button
           onClick={() => handleNextPage()}
-          className="bg-denim w-1/3 text-white py-2 px-2 rounded md:text-lg shadow-md drop-shadow-md"
+          className="bg-denim w-1/3 text-white py-2 px-2 rounded md:text-lg shadow-sm drop-shadow-md hover:shadow-xl active:scale-90 transition duration-150"
         >
           Next Step
         </button>

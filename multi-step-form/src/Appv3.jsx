@@ -10,6 +10,7 @@ import advance_icon from "./assets/images/icon-advanced.svg";
 import SecondForm from "./components/SecondForm";
 import ThirdForm from "./components/ThirdForm";
 import FourthForm from "./components/FourthForm";
+import Thankyou from "./components/Thankyou";
 
 const initialState = {
   pages: [
@@ -86,6 +87,7 @@ const initialState = {
       selectedAddOn: false,
     },
   ],
+  isMonthly: true,
 };
 
 function reducer(state, action) {
@@ -105,6 +107,18 @@ function reducer(state, action) {
         activePage: 1,
       };
 
+    case "TOGGLE_MONTHLY":
+      return {
+        ...state,
+        isMonthly: action.payload,
+      };
+
+    case "BACK_TO_THIRD_FORM":
+      return {
+        ...state,
+        activePage: 3,
+      };
+
     case "NEXT_TO_THIRD_FORM":
       return {
         ...state,
@@ -115,6 +129,12 @@ function reducer(state, action) {
       return {
         ...state,
         activePage: 4,
+      };
+
+    case "NEXT_TO_THANKYOU_PAGE":
+      return {
+        ...state,
+        activePage: 5,
       };
 
     case "BACK_TO_SECOND_FORM":
@@ -177,10 +197,10 @@ function reducer(state, action) {
 }
 
 const Appv3 = () => {
-  const [{ pages, activePage, formData, plan, addOns }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    { pages, activePage, formData, plan, addOns, isMonthly },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   return (
     <div className="flex flex-col h-screen w-screen">
@@ -193,17 +213,24 @@ const Appv3 = () => {
           {activePage === 1 && (
             <Firstform formData={formData} dispatch={dispatch} />
           )}
-          {activePage === 2 && <SecondForm plan={plan} dispatch={dispatch} />}
+          {activePage === 2 && (
+            <SecondForm plan={plan} isMonthly={isMonthly} dispatch={dispatch} />
+          )}
 
           {activePage === 3 && (
             <ThirdForm addOns={addOns} dispatch={dispatch} />
           )}
 
           {activePage === 4 && (
-            <FourthForm addOns={addOns} dispatch={dispatch} />
+            <FourthForm
+              addOns={addOns}
+              plan={plan}
+              isMonthly={isMonthly}
+              dispatch={dispatch}
+            />
           )}
 
-          {/* <FourthForm /> */}
+          {activePage === 5 && <Thankyou />}
         </div>
       </div>
     </div>

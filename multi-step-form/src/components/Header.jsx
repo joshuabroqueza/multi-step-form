@@ -5,7 +5,10 @@ const Header = ({ pages, activePage }) => {
   return (
     <div className="number_container flex flex-row md:flex-col md:justify-evenly items-center my-10 w-full  md:h-3/4 ">
       {pages.map((page) => (
-        <div className="step_child flex flex-row justify-center md:justify-start items-center my-3 w-full">
+        <div
+          key={page.id}
+          className="step_child flex flex-row justify-center md:justify-start items-center my-3 w-full"
+        >
           <div
             className={
               activePage === page.id
