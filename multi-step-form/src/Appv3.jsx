@@ -1,12 +1,15 @@
 import React from "react";
 import Firstform from "./components/Firstform";
 import { useState, useReducer } from "react";
-import SecondForm from "./components/SecondForm";
+
 import Header from "./components/Header";
 import arcade_icon from "./assets/images/icon-arcade.svg";
 import checkmark from "./assets/images/icon-checkmark.svg";
 import icon_pro from "./assets/images/icon-pro.svg";
 import advance_icon from "./assets/images/icon-advanced.svg";
+import SecondForm from "./components/SecondForm";
+import ThirdForm from "./components/ThirdForm";
+import FourthForm from "./components/FourthForm";
 
 const initialState = {
   pages: [
@@ -60,6 +63,29 @@ const initialState = {
       selectedPlan: false,
     },
   ],
+  addOns: [
+    {
+      id: 1,
+      name: "Online Service",
+      description: "Access to multiplayer games",
+      fee: 1,
+      selectedAddOn: false,
+    },
+    {
+      id: 2,
+      name: "Larger storage",
+      description: "Extra 1TB of cloud save",
+      fee: 2,
+      selectedAddOn: false,
+    },
+    {
+      id: 3,
+      name: "Customizable profiles",
+      description: "Custom theme on your profile",
+      fee: 2,
+      selectedAddOn: false,
+    },
+  ],
 };
 
 function reducer(state, action) {
@@ -77,6 +103,48 @@ function reducer(state, action) {
       return {
         ...state,
         activePage: 1,
+      };
+
+    case "NEXT_TO_THIRD_FORM":
+      return {
+        ...state,
+        activePage: 3,
+      };
+
+    case "NEXT_TO_FOURTH_FORM":
+      return {
+        ...state,
+        activePage: 4,
+      };
+
+    case "BACK_TO_SECOND_FORM":
+      console.log(state.addOns);
+      return {
+        ...state,
+        activePage: 2,
+      };
+
+    case "SELECTED_ADD_ON":
+      const selectedAddOn = state.addOns.find(
+        (addOn) => addOn.id === action.payload
+      );
+
+      //Now we want to get the current value of the selectedAddOn, and set it to the opposite
+      //We will use the spread operator to get the current value of the selectedAddOn
+      //We will then set the selectedAddOn property of the selectedAddOn to the opposite of the current value
+
+      const updated__AddOn = {
+        ...selectedAddOn,
+        selectedAddOn: !selectedAddOn.selectedAddOn,
+      };
+
+      const updatedAddOn = state.addOns.map((addOn) =>
+        addOn.id === updated__AddOn.id ? updated__AddOn : addOn
+      );
+
+      return {
+        ...state,
+        addOns: updatedAddOn,
       };
 
     case "SELECTED_PLAN":
@@ -99,13 +167,6 @@ function reducer(state, action) {
           : { ...plan, selectedPlan: false }
       );
 
-      //After setting the selectedPlan property of the selected plan to true
-      //We will update the plan array with the new selectedPlan property
-
-      //   const updatedPlan = state.plan.map((plan) =>
-      //     plan.id === selectedPlan.id ? selectedPlan : plan
-      //   );
-
       return {
         ...state,
         plan: updatedPlan,
@@ -116,7 +177,7 @@ function reducer(state, action) {
 }
 
 const Appv3 = () => {
-  const [{ pages, activePage, formData, plan }, dispatch] = useReducer(
+  const [{ pages, activePage, formData, plan, addOns }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -134,9 +195,13 @@ const Appv3 = () => {
           )}
           {activePage === 2 && <SecondForm plan={plan} dispatch={dispatch} />}
 
-          {/* <SecondForm /> */}
+          {activePage === 3 && (
+            <ThirdForm addOns={addOns} dispatch={dispatch} />
+          )}
 
-          {/* <ThirdForm /> */}
+          {activePage === 4 && (
+            <FourthForm addOns={addOns} dispatch={dispatch} />
+          )}
 
           {/* <FourthForm /> */}
         </div>

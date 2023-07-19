@@ -17,6 +17,12 @@ const SecondForm = ({ dispatch, plan }) => {
     });
   };
 
+  const handleNextPage = () => {
+    dispatch({
+      type: "NEXT_TO_THIRD_FORM",
+    });
+  };
+
   const handleSelectPlan = (id) => {
     dispatch({
       type: "SELECTED_PLAN",
