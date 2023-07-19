@@ -4,12 +4,23 @@ import checkmark from "../assets/images/icon-checkmark.svg";
 import iconpro from "../assets/images/icon-pro.svg";
 import { useState } from "react";
 
-const SecondForm = () => {
+const SecondForm = ({ dispatch }) => {
   const [isMonthly, setIsMonthly] = useState(true);
 
   const handleToggle = () => {
     setIsMonthly(!isMonthly);
   };
+
+  // const handleNextPage = () => {
+  //   onNextStep();
+  // };
+
+  const handlePreviousStep = () => {
+    dispatch({
+      type: "BACK_TO_FIRST_FORM",
+    });
+  };
+
   return (
     <div>
       <div className="form_header w-full p-5 my-5 md:p-0 md:m-0 border md:border-none shadow-lg md:shadow-none drop-shadow md:drop-shadow-none rounded-2xl md:rounded-none bg-white md:h-[80vh] md:w-full ">
@@ -87,10 +98,16 @@ const SecondForm = () => {
       </div>
 
       <div className="button_container md:my-10 my-24 h-[10%] flex justify-between items-center px-5">
-        <button className="bg-white w-1/3 text-black py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md">
+        <button
+          onClick={() => handlePreviousStep()}
+          className="bg-white w-1/3 text-black py-2 px-4 rounded md:text-lg shadow-md drop-shadow-md"
+        >
           Go Back
         </button>
-        <button className="bg-denim w-1/3 text-white py-2 px-2 rounded md:text-lg shadow-md drop-shadow-md">
+        <button
+          onClick={() => handleNextPage()}
+          className="bg-denim w-1/3 text-white py-2 px-2 rounded md:text-lg shadow-md drop-shadow-md"
+        >
           Next Step
         </button>
       </div>

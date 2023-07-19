@@ -27,25 +27,41 @@ const initialState = {
       active: false,
     },
   ],
+  formData: {
+    name: "",
+    email: "",
+    phoneNumber: "",
+  },
+  activePage: 1,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "SET_ACTIVE_PAGE":
       return action.payload;
+    case "FIRST_FORM_SUBMIT":
+      console.log(action.payload);
+      return {
+        ...state,
+        formData: action.payload,
+        activePage: 2,
+      };
+    case "BACK_TO_FIRST_FORM":
+      console.log("back first form: ", state);
+      return {
+        ...state,
+        activePage: 1,
+      };
     default:
       return state;
   }
 }
 
 const Appv3 = () => {
-  const [{ pages }, dispatch] = useReducer(reducer, initialState);
-
-  const [activePage, setActivePage] = useState(1);
-
-  const handleNextStep = () => {
-    setActivePage(activePage + 1);
-  };
+  const [{ pages, activePage, formData }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   return (
     <div className="flex flex-col h-screen w-screen">
@@ -55,8 +71,10 @@ const Appv3 = () => {
         </div>
 
         <div className="body_container flex flex-col px-5 md:px-10 md:w-[70%]">
-          {activePage === 1 && <Firstform onNextStep={handleNextStep} />}
-          {activePage === 2 && <SecondForm />}
+          {activePage === 1 && (
+            <Firstform data={formData} dispatch={dispatch} />
+          )}
+          {activePage === 2 && <SecondForm dispatch={dispatch} />}
 
           {/* <SecondForm /> */}
 
